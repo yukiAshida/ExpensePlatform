@@ -39,15 +39,11 @@ from app.controllers.update_controller import mod_update
 from app.controllers.login_controller import mod_login
 from app.controllers.password_controller import mod_password
 from app.controllers.registration_controller import mod_registration
-
 from app.controllers.admin_finance_controller import mod_admin_finance
 from app.controllers.admin_process_controller import mod_admin_process
 from app.controllers.admin_list_controller import mod_admin_list
-
-
 from app.controllers.travel_expense_controller import mod_travel_expense
 from app.controllers.travel_expense_check_controller import mod_travel_expense_check
-
 
 app.register_blueprint(mod_index)
 app.register_blueprint(mod_index_init)
@@ -56,11 +52,9 @@ app.register_blueprint(mod_update)
 app.register_blueprint(mod_login)
 app.register_blueprint(mod_password)
 app.register_blueprint(mod_registration)
-
 app.register_blueprint(mod_admin_finance)
 app.register_blueprint(mod_admin_process)
 app.register_blueprint(mod_admin_list)
-
 app.register_blueprint(mod_travel_expense)
 app.register_blueprint(mod_travel_expense_check)
 

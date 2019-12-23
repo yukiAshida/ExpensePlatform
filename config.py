@@ -7,4 +7,4 @@ REACT_CONFIGS = {
 ADMINISTRATOR_AUTHORITY = "admin" # 管理者権限必要ページ
 
 # Development環境(True) or Production環境(False)
-LOCAL_DEBUG = True
+LOCAL_DEBUG = False
