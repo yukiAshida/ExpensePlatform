@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+  <title>HEI Expense Tools</title>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <ul id="flask_to_react" style="visibility:hidden;">
+    
+    {% for KEY, VALUE in REACT_CONFIGS.items()%}
+      <li>{{KEY}}:{{VALUE}}</li>
+    {% endfor %}
+
+  </ul>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}" charset="utf-8"></script>
+</body>
+</html>

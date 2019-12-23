@@ -1,0 +1,46 @@
+.text-box {
+  position: relative;
+  width: 80%;
+}
+
+.text-box input[type='text'] {
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  color: #000000;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+}
+
+.text-label input[type='text']:focus {
+  border: 1px solid #da3c41;
+  outline: none;
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+}
+
+.password-box {
+  position: relative;
+  width: 80%;
+  margin: 20px;
+}
+
+.password-box input[type='password'] {
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  color: #000000;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+}
+
+.password-label input[type='password']:focus {
+  border: 1px solid #da3c41;
+  outline: none;
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+}

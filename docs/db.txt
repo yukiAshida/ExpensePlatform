@@ -1,0 +1,186 @@
+### データベースの作成（Heroku本番環境は不要）
+CREATE DATABASE heilab_expense;
+
+### データベースログオフ
+\q
+
+### データベースログイン
+psql -U postgres -d heilab_expense
+
+### ユーザー用テーブルの作成
+CREATE TABLE Client
+(last_name VARCHAR(32) NOT NULL,
+first_name VARCHAR(32) NOT NULL,
+role VARCHAR(32) NOT NULL,
+belonging VARCHAR(32) NOT NULL,
+finance VARCHAR(120) NOT NULL,
+work_code VARCHAR(16) NOT NULL,
+e_mail VARCHAR(64) NOT NULL,
+password VARCHAR(32) NOT NULL,
+reference_list VARCHAR(1080),
+admin Boolean NOT NULL,
+PRIMARY KEY (e_mail));
+
+
+### 財源用テーブルの作成
+CREATE TABLE Finance
+(name VARCHAR(32),
+department_name VARCHAR(64),
+project_name VARCHAR(64),
+budget_name VARCHAR(64),
+account_name VARCHAR(64),
+department_code VARCHAR(32),
+project_code VARCHAR(32),
+budget_code VARCHAR(32),
+account_code VARCHAR(32),
+PRIMARY KEY (name));
+
+
+### 謝金申請コード
+
+CREATE TABLE RewardCode
+(reward_code VARCHAR(10),
+last_name VARCHAR(32),
+first_name VARCHAR(32),
+belonging VARCHAR(32),
+work_content VARCHAR(128),
+hours VARCHAR(4),
+term_start VARCHAR(12),
+term_end VARCHAR(12),
+location VARCHAR(64),
+PRIMARY KEY (reward_code));
+
+
+### 祝日・休日管理用
+CREATE TABLE Holidays
+(date VARCHAR(16),
+content VARCHAR(32),
+PRIMARY KEY (date));
+
+
+### Clientテーブル 追加
+ALTER TABLE Client ADD COLUMN last_name_reading VARCHAR(32);
+ALTER TABLE Client ADD COLUMN first_name_reading VARCHAR(32);
+ALTER TABLE Client ADD COLUMN gender VARCHAR(4);
+ALTER TABLE Client ADD COLUMN nationality VARCHAR(16);
+ALTER TABLE Client ADD COLUMN birthday VARCHAR(16);
+
+
+### 初期データ流し込み(祝日)
+
+BEGIN TRANSACTION;
+
+INSERT INTO Holidays VALUES ( '2019/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2019/1/14', '成人の日' );
+INSERT INTO Holidays VALUES ( '2019/2/11', '建国記念の日' );
+INSERT INTO Holidays VALUES ( '2019/3/21', '春分の日' );
+INSERT INTO Holidays VALUES ( '2019/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2019/4/30', '国民の休日' );
+INSERT INTO Holidays VALUES ( '2019/5/1', '天皇の即位の日' );
+INSERT INTO Holidays VALUES ( '2019/5/2', '国民の休日' );
+INSERT INTO Holidays VALUES ( '2019/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2019/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2019/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2019/5/6', '振替休日' );
+INSERT INTO Holidays VALUES ( '2019/7/15', '海の日' );
+INSERT INTO Holidays VALUES ( '2019/8/11', '山の日' );
+INSERT INTO Holidays VALUES ( '2019/8/12', '振替休日' );
+INSERT INTO Holidays VALUES ( '2019/8/13', '休館日' );
+INSERT INTO Holidays VALUES ( '2019/8/14', '休館日' );
+INSERT INTO Holidays VALUES ( '2019/9/16', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2019/9/23', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2019/10/14', '体育の日' );
+INSERT INTO Holidays VALUES ( '2019/10/22', '即位礼正殿の儀の行われる日' );
+INSERT INTO Holidays VALUES ( '2019/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2019/11/4', '振替休日' );
+INSERT INTO Holidays VALUES ( '2019/11/23', '勤労感謝の日' );
+INSERT INTO Holidays VALUES ( '2020/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2020/1/13', '成人の日' );
+INSERT INTO Holidays VALUES ( '2020/2/11', '建国記念の日' );
+INSERT INTO Holidays VALUES ( '2020/2/23', '天皇誕生日' );
+INSERT INTO Holidays VALUES ( '2020/2/24', '振替休日' );
+INSERT INTO Holidays VALUES ( '2020/3/20', '春分の日' );
+INSERT INTO Holidays VALUES ( '2020/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2020/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2020/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2020/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2020/5/6', '振替休日' );
+INSERT INTO Holidays VALUES ( '2020/7/23', '海の日' );
+INSERT INTO Holidays VALUES ( '2020/7/24', 'スポーツの日' );
+INSERT INTO Holidays VALUES ( '2020/8/10', '山の日' );
+INSERT INTO Holidays VALUES ( '2020/9/21', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2020/9/22', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2020/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2020/11/23', '勤労感謝の日' );
+INSERT INTO Holidays VALUES ( '2021/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2021/1/11', '成人の日' );
+INSERT INTO Holidays VALUES ( '2021/2/11', '建国記念日' );
+INSERT INTO Holidays VALUES ( '2021/2/23', '天皇誕生日' );
+INSERT INTO Holidays VALUES ( '2021/3/20', '春分の日' );
+INSERT INTO Holidays VALUES ( '2021/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2021/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2021/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2021/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2021/7/19', '海の日' );
+INSERT INTO Holidays VALUES ( '2021/8/11', '山の日' );
+INSERT INTO Holidays VALUES ( '2021/9/20', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2021/9/23', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2021/10/11', 'スポーツの日' );
+INSERT INTO Holidays VALUES ( '2021/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2021/11/23', '勤労感謝の日' );
+INSERT INTO Holidays VALUES ( '2022/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2022/1/10', '成人の日' );
+INSERT INTO Holidays VALUES ( '2022/2/11', '建国記念日' );
+INSERT INTO Holidays VALUES ( '2022/2/23', '天皇誕生日' );
+INSERT INTO Holidays VALUES ( '2022/3/21', '春分の日' );
+INSERT INTO Holidays VALUES ( '2022/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2022/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2022/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2022/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2022/7/18', '海の日' );
+INSERT INTO Holidays VALUES ( '2022/8/11', '山の日' );
+INSERT INTO Holidays VALUES ( '2022/9/19', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2022/9/23', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2022/10/10', 'スポーツの日' );
+INSERT INTO Holidays VALUES ( '2022/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2022/11/23', '勤労感謝の日' );
+INSERT INTO Holidays VALUES ( '2023/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2023/1/2', '振替休日' );
+INSERT INTO Holidays VALUES ( '2023/1/9', '成人の日' );
+INSERT INTO Holidays VALUES ( '2023/2/11', '建国記念日' );
+INSERT INTO Holidays VALUES ( '2023/2/23', '天皇誕生日' );
+INSERT INTO Holidays VALUES ( '2023/3/21', '春分の日' );
+INSERT INTO Holidays VALUES ( '2023/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2023/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2023/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2023/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2023/7/17', '海の日' );
+INSERT INTO Holidays VALUES ( '2023/8/11', '山の日' );
+INSERT INTO Holidays VALUES ( '2023/9/18', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2023/9/23', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2023/10/9', 'スポーツの日' );
+INSERT INTO Holidays VALUES ( '2023/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2023/11/23', '勤労感謝の日' );
+INSERT INTO Holidays VALUES ( '2024/1/1', '元日' );
+INSERT INTO Holidays VALUES ( '2024/1/8', '成人の日' );
+INSERT INTO Holidays VALUES ( '2024/2/11', '建国記念日' );
+INSERT INTO Holidays VALUES ( '2024/2/12', '振替休日' );
+INSERT INTO Holidays VALUES ( '2024/2/23', '天皇誕生日' );
+INSERT INTO Holidays VALUES ( '2024/3/20', '春分の日' );
+INSERT INTO Holidays VALUES ( '2024/4/29', '昭和の日' );
+INSERT INTO Holidays VALUES ( '2024/5/3', '憲法記念日' );
+INSERT INTO Holidays VALUES ( '2024/5/4', 'みどりの日' );
+INSERT INTO Holidays VALUES ( '2024/5/5', 'こどもの日' );
+INSERT INTO Holidays VALUES ( '2024/5/6', '振替休日' );
+INSERT INTO Holidays VALUES ( '2024/7/15', '海の日' );
+INSERT INTO Holidays VALUES ( '2024/8/11', '山の日' );
+INSERT INTO Holidays VALUES ( '2024/8/12', '振替休日' );
+INSERT INTO Holidays VALUES ( '2024/9/16', '敬老の日' );
+INSERT INTO Holidays VALUES ( '2024/9/22', '秋分の日' );
+INSERT INTO Holidays VALUES ( '2024/9/23', '振替休日' );
+INSERT INTO Holidays VALUES ( '2024/10/14', 'スポーツの日' );
+INSERT INTO Holidays VALUES ( '2024/11/3', '文化の日' );
+INSERT INTO Holidays VALUES ( '2024/11/4', '振替休日' );
+INSERT INTO Holidays VALUES ( '2024/11/23', '勤労感謝の日' );
+
+COMMIT;

@@ -1,0 +1,40 @@
+/* === ボタンを表示するエリア ============================== */
+.sample3Area {
+    margin: auto;
+    width: 60px;
+}
+   
+/* === チェックボックス ==================================== */
+.sample3Area input[type="checkbox"] {
+    display: none;            /* チェックボックス非表示 */
+}
+   
+/* === チェックボックスのラベル（標準） ==================== */
+.sample3Area label {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;              /* 文字位置は中央     */
+    border: 2px solid #ccc;      /* 枠線(一旦四方向)   */
+    border-radius: 3px;                 /* 角丸               */
+    height: 60px;                /* ボタンの高さ       */
+    font-size: 18px;                /* 文字サイズ         */
+    line-height: 60px;                /* 太字               */
+    font-weight: bold;                /* 太字               */
+    background: #eee;                /* 背景色             */
+    box-shadow: 3px 3px 6px #888;    /* 影付け             */
+    transition: .3s;                 /* ゆっくり変化       */
+}
+   
+/* === ON側のチェックボックスのラベル（ONのとき） ========== */
+.sample3Area label span:after{
+    color: #aaa;
+}
+
+.sample3Area #sample3check:checked + label {
+    background: #78bd78;             /* 背景色             */
+    box-shadow: none;                /* 影を消す           */
+}
+
+.sample3Area #sample3check:checked + label span {
+    color: #fff;                /* 文字色             */
+}

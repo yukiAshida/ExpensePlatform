@@ -1,0 +1,27 @@
+#file-uploader-label {
+        
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+
+    height:50px;
+    width:350px;
+    line-height:50px;
+    font-size:20px;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+
+    background: linear-gradient(#cccccc 0%, #666666 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+
+    #file-uploader {
+        display: none;
+        height:50px;
+        line-height:50px;
+    }
+}
+

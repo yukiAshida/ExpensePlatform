@@ -1,0 +1,65 @@
+body{
+    background-color: lightblue;
+}
+
+div{
+    font-size: 14px;
+    color: black;
+}
+
+
+#template{
+    background-color: #FFAAAA;
+    margin: 10px;
+}
+
+.mycard {
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    width: 90vw;
+    background-color: #ffffff; // linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+    margin: 20px;
+}
+
+#root_page{
+
+    #root_right_column, #root_left_column{
+        padding: 50px 10px 50px 10px;
+    }
+
+    .blue-button, .red-button, .green-button{
+        margin-bottom: 50px;
+    }
+}
+
+
+.flex-column{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.flex-column-left{
+    display: flex;
+    flex-direction:column;
+    align-items: left;
+}
+
+.flex-row-center{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+
+.flex-row-left{
+    display: flex;
+    flex-direction:row;
+    justify-content: left;
+}
+
+.example{
+    font-size: 20px;
+    margin: 0px 0px 20px 20px;
+}

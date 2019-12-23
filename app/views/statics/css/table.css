@@ -1,0 +1,90 @@
+@charset "UTF-8";
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table .header {
+  background-color: #CCCCCC;
+}
+
+table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr.tr-selected {
+  background-color: #FFAACC;
+}
+
+table tr.tr-no-selected:hover {
+  background-color: #d4f0fd;
+}
+
+table th, table td {
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+.route-display-c1 {
+  width: 14%;
+}
+
+.route-display-c2 {
+  width: 14%;
+}
+
+.route-display-c3 {
+  width: 14%;
+}
+
+.route-display-c4 {
+  width: 14%;
+}
+
+.route-display-c5 {
+  width: 14%;
+}
+
+.route-display-c6 {
+  width: 14%;
+}
+
+.cache-table-c1 {
+  width: 20%;
+}
+
+.cache-table-c2 {
+  width: 20%;
+}
+
+.cache-table-c3 {
+  width: 20%;
+}
+
+.cache-table-c4 {
+  width: 20%;
+}
+
+.cache-table-c5 {
+  width: 20%;
+}
+
+/*ボタンを重ねるためのブロック要素*/
+.delete-button button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding-left: 0;
+  padding-right: 1.5px;
+  text-align: center;
+  line-height: 9px;
+  vertical-align: middle;
+  color: #FF0000;
+  font-size: 200%;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
