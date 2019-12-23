@@ -225,3 +225,9 @@ INSERT INTO Finance VALUES
     false
 );
 
+COMMIT;
+
+
+# ユーザー登録後
+update client set admin=true where e_mail = 'ashidayuki99@gmail.com';
+
