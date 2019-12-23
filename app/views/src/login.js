@@ -63,8 +63,6 @@ class LoginPage extends Component{
                     alert("パスワードが間違っています");
                 }else if(res_text["login_error"] == 3){
                     alert("管理者権限がありません");
-                }else if(res_text["login_error"] == 4){
-                    alert("アカウント名かパスワードのいずれかが間違っています");
                 }
             });
         

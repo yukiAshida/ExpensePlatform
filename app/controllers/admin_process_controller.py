@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.models.finance import Finance
 from app.helpers.database_helpers import deleteClient, updateClient, getClientByEmail, getHolidayByDate, addHolidays
-from app.helpers.seculity_helpers import isSuperAdmin
 import os, glob
 from flask_login import login_required
 
@@ -41,7 +40,7 @@ def admin_process():
 
             return jsonify({"comment":"<Client {0}>に管理者権限を付与しました".format(receive_data["admin_e-mail"])})
 
-    # 管理者権限の付与
+    # 管理者権限の削除
     elif mode=="admin-delete":
         
         client = getClientByEmail( receive_data["admin_e-mail"] )
@@ -50,8 +49,6 @@ def admin_process():
             return jsonify({"comment":"メールアドレス {0} は登録されていません".format(receive_data["admin_e-mail"])})                
         elif client.admin == False:
             return jsonify({"comment":"メールアドレス {0} は既に管理者ではありません".format(receive_data["admin_e-mail"])})            
-        elif isSuperAdmin(receive_data["admin_e-mail"]):
-            return jsonify({"comment":"メールアドレス {0} は重要管理者のため、管理者権限を削除できません".format(receive_data["admin_e-mail"])})
         else:
             client.admin = False
             updateClient( client, hashPassword=False )

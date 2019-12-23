@@ -4,7 +4,6 @@ import openpyxl as xl
 import re
 import pandas as pd
 import datetime
-from config import INTERNAL_FINANCE
 
 # 横軸ラベル（["A","B", ... "BW","BX"]）
 ALPHABET_COLUMNS = [chr(i) for i in range(65,65+26)] + ["A"+chr(i) for i in range(65,65+26)] + ["B"+chr(i) for i in range(65,65+24)] 
@@ -175,7 +174,7 @@ def writeEachPageContents(wb, pageNumber, formData, userData, financeData):
 
 
     # 共同研究者の設定
-    if not formData["finance"] in INTERNAL_FINANCE:
+    if financeData["cooperation"]:
         ws["AI46"].value = "■"
         ws["AI47"].value = "共同研究者"
     else:

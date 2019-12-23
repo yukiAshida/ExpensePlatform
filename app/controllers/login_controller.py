@@ -5,7 +5,6 @@ from app.models.auth import Auth
 from app.helpers.auth_helpers import isSuccessPass
 from app.helpers.database_helpers import getAllEmailFromClient, getClientByEmail
 from config import ADMINISTRATOR_AUTHORITY
-from app.helpers.seculity_helpers import isSignupPass
 
 mod_login = Blueprint('login', __name__)
 
@@ -21,14 +20,6 @@ def login():
     e_mail = receive_data["e-mail"]
     password = receive_data["password"]
     next_page = receive_data["next-page"]
-
-    # 登録ページの場合
-    if next_page == "signup":
-
-        if isSignupPass(receive_data["e-mail"], receive_data["password"]):
-            return jsonify( {"login_error":0, "user-information":{}} )
-        else:
-            return jsonify( {"login_error":4} )
 
     # アドレスが登録されていないエラー
     if not e_mail in getAllEmailFromClient():
@@ -58,7 +49,6 @@ def login():
         "finances":clientInformation.finance,
         "e-mail":clientInformation.e_mail,
         "reference_list":clientInformation.reference_list,
-        
         "first-name-reading":clientInformation.first_name_reading,
         "last-name-reading":clientInformation.last_name_reading,
         "gender":clientInformation.gender,

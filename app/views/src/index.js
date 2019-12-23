@@ -10,12 +10,6 @@ import UpdatePage from './update'
 import PasswordPage from './password'
 import AdminPage from './admin'
 import TravelExpensePage from './travel_expense'
-import RewardsForExperimentorPage from './rewards_experimentor'
-import RewardsForApplicantPage from './rewards_applicant'
-
-// import DevelopmentPage from './development'
-
-
 
 
 class IndexPage extends Component{
@@ -105,16 +99,6 @@ class IndexPage extends Component{
 
                 {/* 近距離旅費申請画面 */}
                 {this.state["page"]=="travel_expense" && <TravelExpensePage alterPhase={({update})=>this.alterPhase({update})} user_information={this.state["user_information"]}/>}
-
-                {/* 謝金申請画面 実験者用 */}
-                {this.state["page"]=="rewards_experimentor" && <RewardsForExperimentorPage alterPhase={({update})=>this.alterPhase({update})} user_information={this.state["user_information"]}/>}
-
-                {/* 謝金申請画面 実験者用 */}
-                {this.state["page"]=="rewards_applicant" && <RewardsForApplicantPage alterPhase={({update})=>this.alterPhase({update})} user_information={this.state["user_information"]}/>}
-
-
-                {/* 開発ページ */}
-                {/* {this.state["page"]=="development" && <DevelopmentPage alterPhase={({update})=>this.alterPhase({update})} />} */}
 
             </div>
         );

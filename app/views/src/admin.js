@@ -212,19 +212,6 @@ class AdminPage extends Component{
 
                 </div>                
 
-                {/* 謝金申請データの消去 */}
-                <h1>謝金申請コードの一覧取得</h1>                
-                <div className="mycard flex-column-left">
-                    
-                    <div className="flex-row-left">
-                        <BlueButton value="表示" onClick={(e)=>this.onAdminList(e, "cache-table")}/>
-                        <BlueButton value="閉じる" onClick={(e)=>this.onCloseList(e, "cache-table")}/>
-                    </div>
-
-                    <CacheTable cache_table={this.state["cache-table"]} onClickDelete={(e,ci)=>this.onClickDeleteList(e, ci, "cache-table")}/>
-
-                </div>
-
 
                 <div className="mycard">
                     <BlueButton value="戻る" onClick={(e)=>this.back(e)}/>

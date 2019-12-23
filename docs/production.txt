@@ -1,13 +1,3 @@
-### データベースの作成（Heroku本番環境は不要）
-CREATE DATABASE heilab_expense;
-
-### データベースログオフ
-\q
-
-### データベースログイン
-psql -U postgres -d heilab_expense
-
-### ユーザー用テーブルの作成
 CREATE TABLE Client
 (last_name VARCHAR(32) NOT NULL,
 first_name VARCHAR(32) NOT NULL,
@@ -21,7 +11,6 @@ reference_list VARCHAR(1080),
 admin Boolean NOT NULL,
 PRIMARY KEY (e_mail));
 
-### 財源用テーブルの作成
 CREATE TABLE Finance
 (name VARCHAR(32),
 department_name VARCHAR(64),
@@ -32,26 +21,19 @@ department_code VARCHAR(32),
 project_code VARCHAR(32),
 budget_code VARCHAR(32),
 account_code VARCHAR(32),
-cooperation Boolean NOT NULL,
+cooperation Boolean,
 PRIMARY KEY (name));
 
-
-### 祝日・休日管理用
 CREATE TABLE Holidays
 (date VARCHAR(16),
 content VARCHAR(32),
 PRIMARY KEY (date));
 
-
-### Clientテーブル 追加
 ALTER TABLE Client ADD COLUMN last_name_reading VARCHAR(32);
 ALTER TABLE Client ADD COLUMN first_name_reading VARCHAR(32);
 ALTER TABLE Client ADD COLUMN gender VARCHAR(4);
 ALTER TABLE Client ADD COLUMN nationality VARCHAR(16);
 ALTER TABLE Client ADD COLUMN birthday VARCHAR(16);
-
-
-### 初期データ流し込み(祝日)
 
 BEGIN TRANSACTION;
 

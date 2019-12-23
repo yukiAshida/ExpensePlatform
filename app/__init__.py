@@ -18,7 +18,7 @@ if LOCAL_DEBUG:
     POSTGRES_URL="127.0.0.1:5432"
     POSTGRES_USER="postgres"
     POSTGRES_PW=sys.argv[1]
-    POSTGRES_DB="heilab_expense"
+    POSTGRES_DB="expense_for_work"
     DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
 else:
     DB_URL = os.environ.get("DATABASE_URL")
@@ -48,12 +48,6 @@ from app.controllers.admin_list_controller import mod_admin_list
 from app.controllers.travel_expense_controller import mod_travel_expense
 from app.controllers.travel_expense_check_controller import mod_travel_expense_check
 
-from app.controllers.rewards_experimentor_controller import mod_rewards_experimentor
-from app.controllers.rewards_applicant_controller import mod_rewards_applicant
-
-
-# from app.controllers.development_controller import mod_development
-
 
 app.register_blueprint(mod_index)
 app.register_blueprint(mod_index_init)
@@ -69,9 +63,4 @@ app.register_blueprint(mod_admin_list)
 
 app.register_blueprint(mod_travel_expense)
 app.register_blueprint(mod_travel_expense_check)
-
-app.register_blueprint(mod_rewards_experimentor)
-app.register_blueprint(mod_rewards_applicant)
-
-# app.register_blueprint(mod_development)
 

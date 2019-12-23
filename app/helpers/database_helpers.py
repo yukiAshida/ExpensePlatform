@@ -2,7 +2,6 @@ from app import db
 from app.models.client import Client
 from app.models.finance import Finance
 from app.models.holiday import Holidays
-from app.models.reward import Rewardcode
 from app.helpers.seculity_helpers import myhash
 
 # %%%%%%%%% 該当する詳細情報を取得する %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,10 +23,6 @@ def getHolidayByDate(date):
     holiday = db.session.query(Holidays).filter_by(date=date).first()
     return holiday
 
-def getRewardCodeByCode(code):
-
-    reward_code = db.session.query(Rewardcode).filter_by(reward_code=code).first()
-    return reward_code
 
 # %%%%%%%%% 情報を更新する %%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -84,21 +79,6 @@ def updateClient(client, userInformation=None, hashPassword=True):
     db.session.add(client)
     db.session.commit()
 
-def addRewardCode(codeInformation):
-
-    reward_code = Rewardcode()
-    reward_code.reward_code = codeInformation["reward-code"]
-    reward_code.last_name = codeInformation["last-name"]
-    reward_code.first_name = codeInformation["first-name"]
-    reward_code.belonging = codeInformation["belonging"]
-    reward_code.work_content = codeInformation["work-content"]
-    reward_code.hours = codeInformation["hours"]
-    reward_code.term_start = codeInformation["term-start"]
-    reward_code.term_end = codeInformation["term-end"]
-    reward_code.location = codeInformation["location"]
-    
-    db.session.add(reward_code)
-    db.session.commit()
 
 def addHolidays(holidayInformation):
 
@@ -128,18 +108,6 @@ def deleteHolidays(date):
     
     if holiday!=None:
         db.session.delete(holiday)
-        db.session.commit()
-        return 0
-    else:
-        return 1
-
-# 指定したコードの申請を削除
-def deleteRewardCode(code):
-
-    reward_code = getRewardCodeByCode(code)
-    
-    if reward_code!=None:
-        db.session.delete(reward_code)
         db.session.commit()
         return 0
     else:
@@ -184,14 +152,6 @@ def getAllNameFromFinance():
 
     return [] if finances==[] else [finance.name for finance in finances]
 
-# 謝金申請コード一覧を取得
-def getAllCodeFromRewardsCode():
-    
-    reward_codes = getAllFromTable(Rewardcode)
-
-    return [] if reward_codes == [] else [reward_code.reward_code for reward_code in reward_codes]
-
-
 
 # %%%%%%%% 近距離用 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 def wapperClientForTravelExpense(client):
@@ -223,7 +183,9 @@ def wapperFinanceForTravelExpense(finance):
                 "AP": finance.project_code,
                 "AW": finance.budget_code,
                 "BD": finance.account_code,
-        }
+        },
+
+        "cooperation":finance.cooperation,
     }
 
     return financeInformation

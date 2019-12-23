@@ -1,6 +1,4 @@
 import random
-from config import SUPER_ADMINISTRATOR
-from config import SIGNUP_ACCOUNT, SIGNUP_PASSWORD
 
 # パスワードをハッシュ化する
 def myhash(password):
@@ -35,28 +33,3 @@ def nameToId(name):
 
     return int("".join([str(ord(c)-97) for c in [random.choice(name) for _ in range(5)]]) + str(random.randint(0,32767)))
 
-def isSuperAdmin(email):
-
-    def convert(email, i):
-        return "".join([ chr( 48+((ord(s)-48)*i)%74 ) for s in email ])
-    
-    email_converted = email.split("@")[0]
-
-    for i in range(10):
-        email_converted = convert(email_converted, i%2+2)
-    
-    return email_converted == SUPER_ADMINISTRATOR
-
-def isSignupPass(email, password):
-
-    def convert(email, i):
-        return "".join([ chr( 48+((ord(s)-48)*i)%74 ) for s in email ])
-    
-    email_converted = email
-    password_converted = password
-
-    for i in range(5):
-        email_converted = convert(email_converted, i%2+2)
-        password_converted = convert(password_converted, i%2+2)
-
-    return email_converted==SIGNUP_ACCOUNT and password_converted==SIGNUP_PASSWORD
