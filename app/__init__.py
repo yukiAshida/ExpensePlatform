@@ -58,3 +58,4 @@ app.register_blueprint(mod_admin_list)
 app.register_blueprint(mod_travel_expense)
 app.register_blueprint(mod_travel_expense_check)
 
+print("__init＿")
