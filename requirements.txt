@@ -5,7 +5,7 @@ Flask-HTTPAuth==3.3.0
 Flask-Login==0.4.1
 Flask-SQLAlchemy==2.4.0
 gunicorn==19.9.0
-Jinja2==2.10
+Jinja2==2.11.3
 openpyxl==2.4.10
 pandas==0.24.2
 pipenv==2018.10.9
