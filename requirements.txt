@@ -1,6 +1,6 @@
 Flask==0.12.2
 Flask-CacheBuster==1.0.0
-Flask-Cors==3.0.3
+Flask-Cors==3.0.9
 Flask-HTTPAuth==3.3.0
 Flask-Login==0.4.1
 Flask-SQLAlchemy==2.4.0
