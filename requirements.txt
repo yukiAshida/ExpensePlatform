@@ -8,5 +8,5 @@ gunicorn==19.9.0
 Jinja2==2.10
 openpyxl==2.4.10
 pandas==0.24.2
-pipenv==2018.10.9
+pipenv==2022.1.8
 psycopg2==2.8.2
